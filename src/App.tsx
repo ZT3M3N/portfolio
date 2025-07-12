@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Introduction from "./components/Introduction";
 import { Button } from "./components/ui/button";
+import CardExperience from "./components/CardExperience";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
         description="Soy una persona proactiva"
       ></Introduction>
       <Button></Button>
+      <div className="h-screen">
+        <CardExperience />
+      </div>
     </>
   );
 }
