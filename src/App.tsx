@@ -13,9 +13,7 @@ function App() {
         description="Soy una persona proactiva"
       ></Introduction>
       <Button></Button>
-      <div className="h-screen">
         <CardExperience />
-      </div>
     </>
   );
 }
