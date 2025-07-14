@@ -8,12 +8,15 @@ interface Technology {
     | "frontend"
     | "backend"
     | "database"
-    | "framework";
+    | "framework"
+    | "cms";
+
 }
 
 interface Achievement {
   description: string;
   impact?: string;
+  link?: string;
 }
 
 interface ProjectSection {
@@ -26,7 +29,7 @@ interface ProjectSection {
 
 const portfolioData: ProjectSection[] = [
   {
-    title: "Auxiliar de Sistemas en Corporativo Yireh",
+    title: "Auxiliar de Sistemas",
     subtitle: "Desarrollo de Intranet",
     period: "Abril / 2024 - Actual",
     technologies: [
@@ -58,10 +61,22 @@ const portfolioData: ProjectSection[] = [
     achievements: [
       {
         description:
-          "Desarrollé una aplicación de tipo web con la finalidad de agilizar el despacho de los productos que se encuentran en el almacén de la empresa, además de llevar un buen control y gestión de los productos",
+          "Desarrollé una aplicación de tipo web con la finalidad de agilizar a la hora de atender los productos que se encuentran en el almacén de la empresa, además de llevar un buen control y gestión de estos.",
       },
     ],
   },
+  {
+    subtitle: "Mantenimiento de los sitios web de la empresa",
+    technologies: [
+      { name: "Wordpress", category: "cms" },
+    ],
+    achievements: [
+      {
+        description:
+          "Reestructuré los sitios web con los que cuenta la empresa hechas en Wordpress, pues los sitios carecían de UX e intuitividad",
+      },
+    ],
+  },  
 ];
 
 const TechnologyBadge: React.FC<{ technology: Technology }> = ({
@@ -79,6 +94,8 @@ const TechnologyBadge: React.FC<{ technology: Technology }> = ({
         return "bg-gray-500/30 border-gray-400";
       case "programming-language":
         return "bg-yellow-500/30 border-yellow-400";
+      case "cms":
+        return "bg-blue-100/30 border-blue-400";
       default:
         return "bg-purple-500/30 border-purple-400";
     }

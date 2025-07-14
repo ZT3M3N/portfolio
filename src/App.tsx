@@ -10,8 +10,8 @@ function App() {
       <Header title="🖥️ Hola" subtitle="xddding"></Header>
       <Introduction
         name="Johan"
-        description="Soy una persona proactiva"
-      ></Introduction>
+        description="Soy una persona ..."
+      />
       <Button></Button>
         <CardExperience />
     </>
