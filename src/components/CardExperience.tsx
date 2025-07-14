@@ -10,13 +10,13 @@ interface Technology {
     | "database"
     | "framework"
     | "cms";
-
 }
 
 interface Achievement {
   description: string;
   impact?: string;
-  link?: string;
+  url1?: string;
+  url2?: string;
 }
 
 interface ProjectSection {
@@ -67,16 +67,14 @@ const portfolioData: ProjectSection[] = [
   },
   {
     subtitle: "Mantenimiento de los sitios web de la empresa",
-    technologies: [
-      { name: "Wordpress", category: "cms" },
-    ],
+    technologies: [{ name: "Wordpress", category: "cms" }],
     achievements: [
       {
         description:
-          "Reestructuré los sitios web con los que cuenta la empresa hechas en Wordpress, pues los sitios carecían de UX e intuitividad",
+          "Reestructuré los sitios web con los que cuenta la empresa hechas con el CMS Wordpress, pues los sitios carecían de UX e intuitividad. \nEstos están disponibles en: https://farmaciasyireh.com/ y https://hotelcastillopalenque.com/",
       },
     ],
-  },  
+  },
 ];
 
 const TechnologyBadge: React.FC<{ technology: Technology }> = ({
@@ -117,8 +115,8 @@ const AchievementItem: React.FC<{ achievement: Achievement }> = ({
   achievement,
 }) => (
   <li className="flex items-start gap-3 group">
-    <span className="text-purple-300 mt-1 transition-colors duration-200 group-hover:text-purple-200">
-      •
+    <span className="text-purple-300 mt-1 transition-colors duration-200 group-hover:text-purple-200 text-4xl">
+      ‣
     </span>
     <span className="transition-colors duration-200 group-hover:text-white">
       {achievement.description}
@@ -129,7 +127,7 @@ const AchievementItem: React.FC<{ achievement: Achievement }> = ({
 const ProjectSection: React.FC<{ section: ProjectSection }> = ({ section }) => (
   <section className="space-y-6 transform transition-all duration-300 hover:scale-[1]">
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <h2 className="text-2xl md:text-3xl font-bold text-black">
+      <h2 className="text-2xl md:text-3xl font-bold text-white">
         {section.title}
       </h2>
       {section.period && (
@@ -159,15 +157,20 @@ const ProjectSection: React.FC<{ section: ProjectSection }> = ({ section }) => (
 
 const CardExperience: React.FC = () => {
   return (
-    <div className="max-w-4xl mx-auto">
-      <Card className="bg-[#0743a0] border-blue-500 shadow-2xl transition-all duration-300 hover:shadow-2xl">
-        <CardContent className="p-8 md:p-12 space-y-12">
-          {portfolioData.map((section, index) => (
-            <ProjectSection key={index} section={section} />
-          ))}
-        </CardContent>
-      </Card>
-    </div>
+    <>
+      <h1 className="flex justify-center text-6xl font-bold italic my-10 text-black border-white">
+        Experiencia Profesional 💼
+      </h1>
+      <div className="max-w-4xl mx-auto">
+        <Card className="bg-[#0743a0] border-blue-500 shadow-2xl transition-all duration-300 hover:shadow-2xl">
+          <CardContent className="p-8 md:p-12 space-y-12 text-[20px]">
+            {portfolioData.map((section, index) => (
+              <ProjectSection key={index} section={section} />
+            ))}
+          </CardContent>
+        </Card>
+      </div>
+    </>
   );
 };
 
