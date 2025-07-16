@@ -158,7 +158,7 @@ const ProjectSection: React.FC<{ section: ProjectSection }> = ({ section }) => (
 const CardExperience: React.FC = () => {
   return (
     <>
-      <h1 className="flex justify-center text-6xl font-bold italic my-10 text-black border-white">
+      <h1 className="flex justify-center text-4xl font-bold italic my-10 text-black border-white">
         Experiencia Profesional 💼
       </h1>
       <div className="max-w-4xl mx-auto">
