@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 
 import TypescriptIcon from "@/assets/typescript-svgrepo-com.svg?react";
 import JavascriptIcon from "@/assets/javascript-svgrepo-com.svg?react";
@@ -106,52 +107,75 @@ const projectsData: DataProjects[] = [
 
 const ProjectsSection: React.FC<{ data: DataProjects }> = ({ data }) => (
   <section>
-    <div>
-      <img src={data.image} alt={data.title} width={500} loading="lazy" />
-      <h2 className="text-2xl md:text-3xl font-bold text-black">
-        {data.title}
-      </h2>
-      <p className="text-justify font-semibold">{data.description}</p>
-      <div
-        className="flex flex-wrap gap-2"
-        role="list"
-        aria-label="Tecnologías utilizadas"
-      >
-        {data.svgIcons.map((iconKey, index) => {
-          const IconComponent = iconMap[iconKey];
-          return (
-            <div
-              key={index}
-              className="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-              role="listitem"
-              title={iconKey}
-            >
-              <IconComponent width={35} height={35} />
-            </div>
-          );
-        })}
+    <motion.section
+      className="space-y-6"
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.5 }}
+    >
+      <div>
+        <img src={data.image} alt={data.title} width={500} loading="lazy" />
+        <h2 className="text-2xl md:text-3xl font-bold text-black">
+          {data.title}
+        </h2>
+        <p className="text-justify font-semibold">{data.description}</p>
+        <div
+          className="flex flex-wrap gap-2"
+          role="list"
+          aria-label="Tecnologías utilizadas"
+        >
+          {data.svgIcons.map((iconKey, index) => {
+            const IconComponent = iconMap[iconKey];
+            return (
+              <div
+                key={index}
+                className="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                role="listitem"
+                title={iconKey}
+              >
+                <IconComponent width={35} height={35} />
+              </div>
+            );
+          })}
+        </div>
+        <p>{data.repoLink}</p>
+        <p>{data.demoLink}</p>
       </div>
-      <p>{data.repoLink}</p>
-      <p>{data.demoLink}</p>
-    </div>
+    </motion.section>
   </section>
 );
 
 const Projects: React.FC = () => {
   return (
     <section>
-      <h1 className="flex justify-center text-4xl font-bold italic my-10 text-black border-white">
-        Proyectos 🗂️
-      </h1>
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <h1 className="flex justify-center text-4xl font-bold italic my-10 text-black border-white">
+          Proyectos 🗂️
+        </h1>
+      </motion.section>
+
       <div className="min-h-screen">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
             {projectsData.map((data, index) => (
-              <Card className="cursor-pointer">
-                <CardContent>
-                  <ProjectsSection key={index} data={data} />
-                </CardContent>
-              </Card>
+              <motion.section
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <Card className="cursor-pointer">
+                  <CardContent>
+                    <ProjectsSection key={index} data={data} />
+                  </CardContent>
+                </Card>
+              </motion.section>
             ))}
           </div>
         </div>

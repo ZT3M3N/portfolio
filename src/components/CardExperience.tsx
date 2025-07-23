@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 
 interface Technology {
   name: string;
@@ -125,7 +126,13 @@ const AchievementItem: React.FC<{ achievement: Achievement }> = ({
 );
 
 const ProjectSection: React.FC<{ section: ProjectSection }> = ({ section }) => (
-  <section className="space-y-6 transform transition-all duration-300 hover:scale-[1]">
+  <motion.section
+    className="space-y-6"
+    initial={{ opacity: 0, y: 25 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, ease: "easeOut" }}
+    viewport={{ once: true, amount: 0.5 }}
+  >
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <h2 className="text-2xl md:text-3xl font-bold text-white">
         {section.title}
@@ -152,25 +159,39 @@ const ProjectSection: React.FC<{ section: ProjectSection }> = ({ section }) => (
         <AchievementItem key={index} achievement={achievement} />
       ))}
     </ul>
-  </section>
+  </motion.section>
 );
 
 const CardExperience: React.FC = () => {
   return (
-    <>
-      <h1 className="flex justify-center text-4xl font-bold italic my-10 text-black border-white">
-        Experiencia Profesional 💼
-      </h1>
+    <section>
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <h1 className="flex justify-center text-4xl font-bold italic my-10 text-black border-white">
+          Experiencia Profesional 💼
+        </h1>
+      </motion.section>
       <div className="max-w-4xl mx-auto">
-        <Card className="bg-[#0743a0] border-blue-500 shadow-2xl transition-all duration-300 hover:shadow-2xl">
-          <CardContent className="p-8 md:p-12 space-y-12 text-[20px]">
-            {portfolioData.map((section, index) => (
-              <ProjectSection key={index} section={section} />
-            ))}
-          </CardContent>
-        </Card>
+        <motion.section
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <Card className="bg-[#0743a0] border-blue-500 shadow-2xl transition-all duration-300 hover:shadow-2xl">
+            <CardContent className="p-8 md:p-12 space-y-12 text-[20px]">
+              {portfolioData.map((section, index) => (
+                <ProjectSection key={index} section={section} />
+              ))}
+            </CardContent>
+          </Card>
+        </motion.section>
       </div>
-    </>
+    </section>
   );
 };
 

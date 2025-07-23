@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import {motion} from "framer-motion";
 
 interface EducationInfo {
   name: string;
@@ -26,6 +27,12 @@ const EducationSection: React.FC<{ data: EducationInfo }> = ({ data }) => (
 const Education: React.FC = () => {
   return (
     <section>
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
       <h1 className="flex justify-center text-4xl font-bold italic my-10 text-black border-white">Educación🏫</h1>
       <div className="min-h-screen">
         <div className="max-w-3xl mx-auto">
@@ -38,6 +45,7 @@ const Education: React.FC = () => {
           ))}
         </div>
       </div>
+      </motion.section>
     </section>
   );
 };
